@@ -6,8 +6,19 @@ class MobileLayoutHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body:MobileHomeViewBody() ,
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.network(
+              'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png',
+              width: 60,
+            ),
+            
+          ],
+        ),
+      ),
+      body: MobileHomeViewBody(),
     );
   }
 }
