@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/Core/utils/app_styles.dart';
-import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/mobile_home_view_body.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/my_app_bar.dart';
 
