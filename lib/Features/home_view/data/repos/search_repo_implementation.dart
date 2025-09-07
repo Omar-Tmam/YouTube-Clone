@@ -25,7 +25,7 @@ class SearchRepoImplementation implements SearchRepo {
 
   @override
   Future<Either<Failure, SearchModel>> getFeatured(
-      {required String value}) async {
+      ) async {
     try {
       var data = await apiService.get(
           endPoint: '/v1/info?username_or_id_or_url=flutter');

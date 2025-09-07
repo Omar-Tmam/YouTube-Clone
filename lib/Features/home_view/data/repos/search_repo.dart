@@ -4,5 +4,5 @@ import 'package:youtube_clone/Features/home_view/data/models/search_model/search
 
 abstract class SearchRepo {
    Future<Either<Failure, SearchModel>> getVideo({required String value});
-   Future<Either<Failure, SearchModel>> getFeatured({required String value});
+   Future<Either<Failure, SearchModel>> getFeatured();
 }
