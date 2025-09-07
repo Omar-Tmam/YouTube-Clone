@@ -10,6 +10,7 @@ class MobileLayoutHomeView extends StatefulWidget {
 }
 
 class _MobileLayoutHomeViewState extends State<MobileLayoutHomeView> {
+  bool isClear = false;
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
   @override
@@ -30,12 +31,34 @@ class _MobileLayoutHomeViewState extends State<MobileLayoutHomeView> {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
+        isClear = false;
       },
       child: Scaffold(
         appBar: AppBar(
           title: MyAppBar(
+              suffix: isClear
+                  ? GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          controller.clear();
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: Icon(
+                          Icons.cancel,
+                          color: Colors.blue,
+                          size: 20,
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink(),
               onSubmitted: (value) {},
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  isClear = true;
+                });
+              },
               focusNode: focusNode,
               controller: controller),
         ),

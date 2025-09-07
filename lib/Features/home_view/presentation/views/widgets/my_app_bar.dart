@@ -9,12 +9,13 @@ class MyAppBar extends StatelessWidget {
       required this.focusNode,
       required this.controller,
       required this.onTap,
-      required this.onSubmitted});
+      required this.onSubmitted, required this.suffix});
 
   final TextEditingController controller;
   final Function()? onTap;
   final Function(dynamic)? onSubmitted;
   final FocusNode? focusNode;
+  final Widget suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +41,7 @@ class MyAppBar extends StatelessWidget {
             focusNode: focusNode,
             onTap: onTap,
             onSubmitted: onSubmitted,
-            suffix: Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Icon(
-                Icons.cancel,
-                color: Colors.blue,
-                size: 20,
-              ),
-            ),
+            suffix: suffix,
             placeholderStyle:
                 AppStyles.styleRegular16(context).copyWith(color: Colors.black),
             prefix: Padding(
