@@ -39,7 +39,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   Widget build(BuildContext context) {
     // 5. Use the Video widget to display the video output.
     // I've kept your original Expanded widget.
-    return Expanded(
+    return AspectRatio(
+      aspectRatio: 16 / 9,
       child: Video(controller: controller),
     );
   }
