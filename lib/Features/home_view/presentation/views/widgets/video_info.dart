@@ -29,7 +29,15 @@ class VideoInfo extends StatelessWidget {
             children: [
               CustomText(title: searchModel.items?[index].title ?? ''),
               CustomText(title: searchModel.items?[index].channel?.name ?? ''),
-              CustomText(title: searchModel.items?[index].viewCountText ?? '')
+              Row(
+                children: [
+                  CustomText(
+                      title: searchModel.items?[index].viewCountText ?? ''),
+                  CustomText(
+                      title:
+                          ' •  ${searchModel.items?[index].publishedTimeText ?? ''}'),
+                ],
+              )
             ],
           ),
         )
