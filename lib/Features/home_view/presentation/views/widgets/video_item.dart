@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/video_info.dart';
 
 class VideoItem extends StatelessWidget {
-  const VideoItem({super.key});
+  const VideoItem({super.key, required this.searchModel, required this.index});
+  final SearchModel searchModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,7 @@ class VideoItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(
-                  'https://i.ytimg.com/vi/7D-6MYpfFmk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC8du8OUtV1vhf2FgF3hfrXQIdGnA'),
+              Image.network(searchModel.items?[index].thumbnails?[1].url?? ''),
               Positioned(
                 bottom: 5,
                 right: 10,
@@ -26,7 +28,7 @@ class VideoItem extends StatelessWidget {
                     fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
                     color: Colors.black,
                     fontSize: AppStyles.styleSemiBold18(context).fontSize,
-                    title: '00:00',
+                    title: searchModel.items?[index].lengthText??'',
                   ),
                 ),
               ),
@@ -35,7 +37,10 @@ class VideoItem extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          VideoInfo(),
+          VideoInfo(
+            index: index,
+            searchModel: searchModel,
+          ),
           Divider(
             color: Colors.white,
           )

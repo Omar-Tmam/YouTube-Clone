@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
 
 class VideoInfo extends StatelessWidget {
   const VideoInfo({
     super.key,
+    required this.searchModel,
+    required this.index,
   });
+  final SearchModel searchModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +17,21 @@ class VideoInfo extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: NetworkImage(
-              'https://yt3.ggpht.com/-B-rvdIH8cZ3vh7vVlTw9nT6h0RYNU2__RsDAMeB_emc_XtnPZiaIRUKH2Gti75u50qXGuNoIAE=s68-c-k-c0x00ffffff-no-rj'),
+              searchModel.items?[index].channel?.avatar?[0].url ?? ''),
           radius: 20,
         ),
         SizedBox(
           width: 10,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomText(title: 'Video Name'),
-            CustomText(title: 'channel name,watched by,days ago')
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomText(title: searchModel.items?[index].title ?? ''),
+              CustomText(title: searchModel.items?[index].channel?.name ?? ''),
+              CustomText(title: searchModel.items?[index].viewCountText ?? '')
+            ],
+          ),
         )
       ],
     );
