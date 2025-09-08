@@ -22,7 +22,8 @@ class VideoItem extends StatelessWidget {
             children: [
               GestureDetector(
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kVideoDetailView);
+                    GoRouter.of(context).push(AppRouter.kVideoDetailView,
+                        extra: searchModel.items?[index].id);
                   },
                   child: Image.network(
                       searchModel.items?[index].thumbnails?[1].url ?? '')),
