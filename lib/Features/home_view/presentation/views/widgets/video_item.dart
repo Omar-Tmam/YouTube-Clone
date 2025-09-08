@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:youtube_clone/Core/utils/app_router.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
@@ -18,7 +20,12 @@ class VideoItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(searchModel.items?[index].thumbnails?[1].url ?? ''),
+              GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kVideoDetailView);
+                  },
+                  child: Image.network(
+                      searchModel.items?[index].thumbnails?[1].url ?? '')),
               Positioned(
                 bottom: 5,
                 right: 10,
