@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_clone/Features/home_view/presentation/manager/cubit/search_video_cubit.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/video_item.dart';
