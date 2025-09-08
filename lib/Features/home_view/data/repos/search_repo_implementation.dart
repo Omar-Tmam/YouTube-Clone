@@ -13,22 +13,7 @@ class SearchRepoImplementation implements SearchRepo {
   Future<Either<Failure, SearchModel>> getVideo({required String value}) async {
     try {
       var data = await apiService.get(
-          endPoint: '/v1/info?username_or_id_or_url=$value');
-      return Right(SearchModel.fromJson(data));
-    } catch (e) {
-      if (e is DioException) {
-        return Left(ServerFailure.fromDioError(e));
-      }
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, SearchModel>> getFeatured(
-      ) async {
-    try {
-      var data = await apiService.get(
-          endPoint: '/v1/info?username_or_id_or_url=flutter');
+          endPoint: '/v2/search/videos?keyword=$value');
       return Right(SearchModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
