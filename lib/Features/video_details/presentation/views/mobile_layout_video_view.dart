@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/mobile_video_view_body.dart';
 
 class MobileLayoutVideoView extends StatelessWidget {
-  const MobileLayoutVideoView({super.key, required this.id});
-  final String id;
+  const MobileLayoutVideoView({super.key});
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MobileLayoutVideoView extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 0,
       ),
-      body: MobileVideoViewBody(id:id ,url: ,),
+      body: MobileVideoViewBody(),
     );
   }
 }

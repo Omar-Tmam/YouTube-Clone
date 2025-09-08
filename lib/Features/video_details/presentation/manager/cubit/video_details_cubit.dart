@@ -9,6 +9,7 @@ class VideoDetailsCubit extends Cubit<VideoDetailsState> {
   VideoDetailsCubit(this.videoDetailRepo) : super(VideoDetailsInitial());
   final VideoDetailRepo videoDetailRepo;
   Future<void> getVideoDetail(String id) async {
+    emit(VideoDetailsLoading());
     var data = await videoDetailRepo.getVideoDetails(videoId: id);
     data.fold((failure) {
       emit(VideoDetailsFailure(errMessage: failure.errMessage));
