@@ -12,8 +12,8 @@ class SearchRepoImplementation implements SearchRepo {
   @override
   Future<Either<Failure, SearchModel>> getVideo({required String value}) async {
     try {
-      var data = await apiService.get(
-          endPoint: '/v2/search/videos?keyword=$value');
+      var data =
+          await apiService.get(endPoint: '/v2/search/videos?keyword=$value');
       return Right(SearchModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {

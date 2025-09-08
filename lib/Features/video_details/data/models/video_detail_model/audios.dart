@@ -2,16 +2,16 @@ import 'package:equatable/equatable.dart';
 
 import 'item.dart';
 
-class SearchModel extends Equatable {
+class Audios extends Equatable {
   final String? errorId;
-  final String? nextToken;
+  final int? expiration;
   final List<Item>? items;
 
-  const SearchModel({this.errorId, this.nextToken, this.items});
+  const Audios({this.errorId, this.expiration, this.items});
 
-  factory SearchModel.fromJson(Map<String, dynamic> json) => SearchModel(
+  factory Audios.fromJson(Map<String, dynamic> json) => Audios(
         errorId: json['errorId'] as String?,
-        nextToken: json['nextToken'] as String?,
+        expiration: json['expiration'] as int?,
         items: (json['items'] as List<dynamic>?)
             ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
             .toList(),
@@ -19,10 +19,10 @@ class SearchModel extends Equatable {
 
   Map<String, dynamic> toJson() => {
         'errorId': errorId,
-        'nextToken': nextToken,
+        'expiration': expiration,
         'items': items?.map((e) => e.toJson()).toList(),
       };
 
   @override
-  List<Object?> get props => [errorId, nextToken, items];
+  List<Object?> get props => [errorId, expiration, items];
 }

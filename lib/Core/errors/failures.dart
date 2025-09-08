@@ -11,7 +11,8 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure('Connection Timeout - Please check your internet connection');
+        return ServerFailure(
+            'Connection Timeout - Please check your internet connection');
       case DioExceptionType.sendTimeout:
         return ServerFailure('Request Send Timeout - Please try again');
       case DioExceptionType.receiveTimeout:
@@ -42,35 +43,36 @@ class ServerFailure extends Failure {
     try {
       // Handle different response formats
       String errorMessage = _extractErrorMessage(response);
-      
+
       switch (statusCode) {
         case 400:
-          return ServerFailure(errorMessage.isNotEmpty 
-              ? errorMessage 
+          return ServerFailure(errorMessage.isNotEmpty
+              ? errorMessage
               : 'Bad Request - Invalid parameters');
         case 401:
-          return ServerFailure(errorMessage.isNotEmpty 
-              ? errorMessage 
+          return ServerFailure(errorMessage.isNotEmpty
+              ? errorMessage
               : 'Unauthorized - Please check API credentials');
         case 403:
-          return ServerFailure(errorMessage.isNotEmpty 
-              ? errorMessage 
+          return ServerFailure(errorMessage.isNotEmpty
+              ? errorMessage
               : 'Access Forbidden - API quota exceeded or invalid key');
         case 404:
-          return ServerFailure(errorMessage.isNotEmpty 
-              ? errorMessage 
-              : 'Content not found');
+          return ServerFailure(
+              errorMessage.isNotEmpty ? errorMessage : 'Content not found');
         case 429:
           return ServerFailure('Too many requests - Please try again later');
         case 500:
-          return ServerFailure('Internal Server Error - Please try again later');
+          return ServerFailure(
+              'Internal Server Error - Please try again later');
         case 502:
-          return ServerFailure('Bad Gateway - Server is temporarily unavailable');
+          return ServerFailure(
+              'Bad Gateway - Server is temporarily unavailable');
         case 503:
           return ServerFailure('Service Unavailable - Please try again later');
         default:
-          return ServerFailure(errorMessage.isNotEmpty 
-              ? errorMessage 
+          return ServerFailure(errorMessage.isNotEmpty
+              ? errorMessage
               : 'Something went wrong (Error: $statusCode)');
       }
     } catch (e) {
@@ -81,7 +83,7 @@ class ServerFailure extends Failure {
   // Helper method to extract error message from different response formats
   static String _extractErrorMessage(dynamic response) {
     if (response == null) return '';
-    
+
     try {
       // Handle Map response (most common)
       if (response is Map<String, dynamic>) {
@@ -94,19 +96,19 @@ class ServerFailure extends Failure {
             return error;
           }
         }
-        
+
         // Try other common error keys
-        return response['message'] ?? 
-               response['detail'] ?? 
-               response['error_description'] ?? 
-               '';
+        return response['message'] ??
+            response['detail'] ??
+            response['error_description'] ??
+            '';
       }
-      
+
       // Handle String response
       if (response is String) {
         return response;
       }
-      
+
       // Handle List response (less common)
       if (response is List && response.isNotEmpty) {
         final firstItem = response.first;
@@ -116,12 +118,11 @@ class ServerFailure extends Failure {
           return firstItem['message'] ?? firstItem['detail'] ?? '';
         }
       }
-      
     } catch (e) {
       // If parsing fails, return empty string
       return '';
     }
-    
+
     return '';
   }
 }
@@ -129,20 +130,17 @@ class ServerFailure extends Failure {
 // Optional: Custom exception for API-specific errors
 class YouTubeApiFailure extends Failure {
   final String? errorCode;
-  
+
   YouTubeApiFailure(super.errMessage, {this.errorCode});
-  
+
   factory YouTubeApiFailure.quotaExceeded() {
-    return YouTubeApiFailure(
-      'API quota exceeded. Please try again later.',
-      errorCode: 'QUOTA_EXCEEDED'
-    );
+    return YouTubeApiFailure('API quota exceeded. Please try again later.',
+        errorCode: 'QUOTA_EXCEEDED');
   }
-  
+
   factory YouTubeApiFailure.invalidApiKey() {
     return YouTubeApiFailure(
-      'Invalid API key. Please check your configuration.',
-      errorCode: 'INVALID_API_KEY'
-    );
+        'Invalid API key. Please check your configuration.',
+        errorCode: 'INVALID_API_KEY');
   }
 }

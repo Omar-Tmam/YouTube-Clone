@@ -17,7 +17,8 @@ class AppTheme {
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(backgroundColor: Colors.transparent, foregroundColor: Colors.black),
+      style: IconButton.styleFrom(
+          backgroundColor: Colors.transparent, foregroundColor: Colors.black),
     ),
     primaryIconTheme: IconThemeData(color: Colors.black),
   );
@@ -38,7 +39,8 @@ class AppTheme {
     iconTheme: const IconThemeData(color: Colors.white),
     scaffoldBackgroundColor: Colors.black,
     iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(backgroundColor: Colors.transparent, foregroundColor: Colors.white),
+      style: IconButton.styleFrom(
+          backgroundColor: Colors.transparent, foregroundColor: Colors.white),
     ),
     primaryIconTheme: IconThemeData(color: Colors.white),
   );

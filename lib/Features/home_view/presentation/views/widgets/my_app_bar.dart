@@ -9,7 +9,8 @@ class MyAppBar extends StatelessWidget {
       required this.focusNode,
       required this.controller,
       required this.onTap,
-      required this.onSubmitted, required this.suffix});
+      required this.onSubmitted,
+      required this.suffix});
 
   final TextEditingController controller;
   final Function()? onTap;

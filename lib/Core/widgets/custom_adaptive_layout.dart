@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/size_config.dart';
 
-
 class CustomAdaptiveLayout extends StatelessWidget {
   final WidgetBuilder mobileLayout, tabletLayout;
 

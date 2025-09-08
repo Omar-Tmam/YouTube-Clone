@@ -14,7 +14,7 @@ final class SearchVideoLoading extends SearchVideoState {}
 final class SearchVideoSuccess extends SearchVideoState {
   final SearchModel searchModel;
 
-const SearchVideoSuccess({required this.searchModel});
+  const SearchVideoSuccess({required this.searchModel});
 }
 
 final class SearchVideoFailure extends SearchVideoState {

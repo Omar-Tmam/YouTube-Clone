@@ -11,7 +11,7 @@ class CustomText extends StatelessWidget {
     this.color,
     this.overflow,
   });
-  
+
   final String title;
   final double? fontSize;
   final FontWeight? fontWeight;
@@ -27,8 +27,8 @@ class CustomText extends StatelessWidget {
       overflow: overflow ?? (maxLines != null ? TextOverflow.ellipsis : null),
       style: TextStyle(
         fontWeight: fontWeight,
-        fontSize: fontSize != null 
-            ? getResponsiveFontSize(context, fontSize: fontSize!) 
+        fontSize: fontSize != null
+            ? getResponsiveFontSize(context, fontSize: fontSize!)
             : null,
         color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
       ),

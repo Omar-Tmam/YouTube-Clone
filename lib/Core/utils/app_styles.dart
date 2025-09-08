@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/size_config.dart';
 
-
 abstract class AppStyles {
   static TextStyle styleSemiBold18(BuildContext context) {
     return TextStyle(
