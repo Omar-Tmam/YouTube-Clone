@@ -12,7 +12,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kVideoDetailView,
-      builder: (context, state) => VideoDetailView(),
+      builder: (context, state) => VideoDetailView(id: state.extra as String),
     ),
   ]);
 }
