@@ -18,7 +18,7 @@ class VideoItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(searchModel.items?[index].thumbnails?[1].url?? ''),
+              Image.network(searchModel.items?[index].thumbnails?[1].url ?? ''),
               Positioned(
                 bottom: 5,
                 right: 10,
@@ -28,7 +28,7 @@ class VideoItem extends StatelessWidget {
                     fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
                     color: Colors.black,
                     fontSize: AppStyles.styleSemiBold18(context).fontSize,
-                    title: searchModel.items?[index].lengthText??'',
+                    title: searchModel.items?[index].lengthText ?? '',
                   ),
                 ),
               ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:youtube_clone/Features/home_view/presentation/manager/cubit/search_video_cubit.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/mobile_home_view_body.dart';
 import 'package:youtube_clone/Features/home_view/presentation/views/widgets/my_app_bar.dart';
 
@@ -53,7 +55,9 @@ class _MobileLayoutHomeViewState extends State<MobileLayoutHomeView> {
                       ),
                     )
                   : SizedBox.shrink(),
-              onSubmitted: (value) {},
+              onSubmitted: (value) {
+                context.read<SearchVideoCubit>().getVideo(value);
+              },
               onTap: () {
                 setState(() {
                   isClear = true;

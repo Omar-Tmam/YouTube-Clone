@@ -7,20 +7,20 @@ import 'package:youtube_clone/Features/home_view/presentation/views/widgets/vide
 class MobileHomeViewBody extends StatelessWidget {
   const MobileHomeViewBody({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchVideoCubit, SearchVideoState>(
       builder: (context, state) {
         if (state is SearchVideoLoading) {
-          return CupertinoActivityIndicator();
+          return Center(child: CupertinoActivityIndicator());
         } else if (state is SearchVideoSuccess) {
           return ListView.builder(
             itemCount: state.searchModel.items?.length,
             itemBuilder: (context, index) {
               return VideoItem(
                 index: index,
-                searchModel: state.searchModel,);
+                searchModel: state.searchModel,
+              );
             },
           );
         } else {

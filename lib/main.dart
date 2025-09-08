@@ -10,6 +10,7 @@ class YouTubeClone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.sizeOf(context).width);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,

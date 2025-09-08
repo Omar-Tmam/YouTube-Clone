@@ -13,7 +13,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SearchVideoCubit(SearchRepoImplementation(apiService: ApiService()))..getVideo('flutter'),
+      create: (context) =>
+          SearchVideoCubit(SearchRepoImplementation(apiService: ApiService()))
+            ..getVideo('flutter'),
       child: CustomAdaptiveLayout(
         mobileLayout: (context) => MobileLayoutHomeView(),
         tabletLayout: (context) => TabletLayoutHomeView(),
