@@ -29,7 +29,9 @@ class ChannelAndSubscribeSection extends StatelessWidget {
           title: widget.videoDetailModel.channel?.name ?? '',
           fontSize: AppStyles.styleRegular14(context).fontSize,
         ),
-        Expanded(child: SizedBox()),
+        SizedBox(
+          width: 10,
+        ),
         CustomText(
           title: '${widget.videoDetailModel.channel?.subscriberCountText}',
           fontSize: AppStyles.styleRegular14(context).fontSize,
@@ -37,6 +39,7 @@ class ChannelAndSubscribeSection extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
+        Expanded(child: SizedBox()),
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
@@ -44,8 +47,7 @@ class ChannelAndSubscribeSection extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             elevation: 0,
           ),
           child: CustomText(

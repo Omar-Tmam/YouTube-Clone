@@ -36,6 +36,11 @@ class ViewsAndDateSection extends StatelessWidget {
           CustomText(
             title: ' • ${widget.videoDetailModel.publishedTimeText} ',
             fontSize: AppStyles.styleRegular14(context).fontSize,
+          ),
+          CustomText(
+            title: '....',
+            fontSize: AppStyles.styleSemiBold18(context).fontSize,
+            fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
           )
         ],
       ),
