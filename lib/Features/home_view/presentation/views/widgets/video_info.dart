@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
 
@@ -27,15 +28,20 @@ class VideoInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(title: searchModel.items?[index].title ?? ''),
+              CustomText(
+                title: searchModel.items?[index].title ?? '',
+                fontSize: AppStyles.styleRegular14(context).fontSize,
+              ),
               CustomText(title: searchModel.items?[index].channel?.name ?? ''),
               Row(
                 children: [
                   CustomText(
-                      title: searchModel.items?[index].viewCountText ?? ''),
+                      title: searchModel.items?[index].viewCountText ?? '',
+                      fontSize: AppStyles.styleRegular14(context).fontSize),
                   CustomText(
                       title:
-                          ' •  ${searchModel.items?[index].publishedTimeText ?? ''}'),
+                          ' •  ${searchModel.items?[index].publishedTimeText ?? ''}',
+                      fontSize: AppStyles.styleRegular14(context).fontSize),
                 ],
               )
             ],
