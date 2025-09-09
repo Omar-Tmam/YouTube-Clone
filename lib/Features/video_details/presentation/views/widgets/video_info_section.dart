@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_sub_system.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/views_date_sction.dart';
@@ -9,10 +10,11 @@ import 'package:youtube_clone/Features/video_details/presentation/views/widgets/
 class VideoInfoSection extends StatelessWidget {
   const VideoInfoSection({
     super.key,
-    required this.widget,
+    required this.widget, required this.videoDetailModel,
   });
 
   final VideoPlayerWidget widget;
+  final VideoDetailModel videoDetailModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class VideoInfoSection extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        ViewsAndDateSection(widget: widget),
+        ViewsAndDateSection(widget: widget,videoDetailModel:videoDetailModel ,),
         // GestureDetector(
         //   onTap: () {
         //     setState(() {

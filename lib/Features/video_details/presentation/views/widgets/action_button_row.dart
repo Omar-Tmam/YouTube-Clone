@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
-
 
 class ActionButtonsRow extends StatelessWidget {
   final List<ActionButtonModel> buttons;
@@ -16,12 +16,9 @@ class ActionButtonsRow extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: ElevatedButton.icon(
-              onPressed: () {}, // زر شكلي بس
+              onPressed: () {}, 
               icon: Icon(btn.icon, color: Colors.white, size: 20),
-              label: Text(
-                btn.label,
-                style: const TextStyle(color: Colors.white, fontSize: 14),
-              ),
+              label: Text(btn.label, style: AppStyles.styleRegular14(context)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[900],
                 shape: RoundedRectangleBorder(

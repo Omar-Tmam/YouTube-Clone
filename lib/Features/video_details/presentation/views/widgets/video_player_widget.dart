@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
+import 'package:youtube_clone/Core/functions/format_number.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
@@ -24,22 +25,12 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   // 1. Create a [Player] instance from media_kit.
   late final player = Player();
   bool isDescreption = false;
-  final List<ActionButtonModel> buttons = [
-    ActionButtonModel(icon: Icons.thumb_up_alt_outlined, label: "3.1K"),
-    ActionButtonModel(icon: Icons.share_outlined, label: "Share"),
-    ActionButtonModel(icon: Icons.bookmark_border, label: "Save"),
-    ActionButtonModel(icon: Icons.download_outlined, label: "Download"),
-  ];
-
-  // 2. Create a [VideoController] instance and associate it with the player.
+  late List<ActionButtonModel> buttons;
   late final controller = VideoController(player);
 
   @override
   void initState() {
     super.initState();
-    // 3. Open the media source.
-    // The `play: true` argument will start playback immediately,
-    // which matches the behavior of your original video_player code.
     player.open(Media(widget.url), play: true);
   }
 
@@ -52,8 +43,19 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // 5. Use the Video widget to display the video output.
-    // I've kept your original Expanded widget.
+    final buttons = [
+      ActionButtonModel(
+        icon: Icons.thumb_up_alt_outlined,
+        label: formatNumber(widget.videoDetailModel.likeCount!),
+      ),
+      ActionButtonModel(icon: Icons.share_outlined, label: "Share"),
+      ActionButtonModel(icon: Icons.bookmark_border, label: "Save"),
+      ActionButtonModel(icon: Icons.download_outlined, label: "Download"),
+      ActionButtonModel(icon: Icons.favorite_border, label: "Thanks"),
+      ActionButtonModel(icon: Icons.content_cut, label: "Clip"),
+      ActionButtonModel(icon: Icons.flag_outlined, label: "Report"),
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,7 +63,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           aspectRatio: 16 / 9,
           child: Video(controller: controller),
         ),
-        VideoInfoSection(widget: widget),
+        VideoInfoSection(
+          widget: widget,
+          videoDetailModel: widget.videoDetailModel,
+        ),
         ActionButtonsRow(buttons: buttons)
       ],
     );
