@@ -85,20 +85,3 @@ class CustomText extends StatelessWidget {
   }
 }
 
-// Helper function for responsive font sizing
-double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
-  double scaleFactor = getScaleFactor(context);
-  double responsiveSize = fontSize * scaleFactor;
-  double lowerLimit = fontSize * 0.8;
-  double upperLimit = fontSize * 1.2;
-  return responsiveSize.clamp(lowerLimit, upperLimit);
-}
-
-double getScaleFactor(BuildContext context) {
-  double width = MediaQuery.sizeOf(context).width;
-  if (width < SizeConfig.tabletBreakPoint) {
-    return width / 450;
-  } else {
-    return width / 800;
-  }
-}

@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_info_section.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   /// The network URL of the video to play.
@@ -51,19 +53,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           aspectRatio: 16 / 9,
           child: Video(controller: controller),
         ),
-        CustomText(title: widget.videoDetailModel.title ?? ''),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              isDescreption = !isDescreption;
-            });
-          },
-          child: CustomText(
-            title: widget.videoDetailModel.description ?? '',
-            overflow: TextOverflow.ellipsis,
-            maxLines: isDescreption ? 10 : 2,
-          ),
-        ),
+        VideoInfoSection(widget: widget),
       ],
     );
   }
