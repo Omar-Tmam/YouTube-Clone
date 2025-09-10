@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
-import 'package:youtube_clone/Features/video_details/data/repos/video_detail_repo.dart';
+import 'package:youtube_clone/Features/video_details/data/repos/video_detail_repo/video_detail_repo.dart';
 
 part 'video_details_state.dart';
 
