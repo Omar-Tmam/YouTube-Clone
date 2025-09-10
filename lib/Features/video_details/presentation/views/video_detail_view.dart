@@ -9,6 +9,7 @@ import 'package:youtube_clone/Features/video_details/presentation/manager/cubits
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/related_cubit/related_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/video_detail_cubit/video_details_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/mobile_layout_video_view.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/tablet_layout_video_view.dart';
 
 class VideoDetailView extends StatelessWidget {
   const VideoDetailView({super.key, required this.id});
@@ -26,14 +27,14 @@ class VideoDetailView extends StatelessWidget {
             create: (context) => CommentCubit(
                 CommentRepoImplementation(apiService: ApiService()))
               ..getComment(id)),
-              BlocProvider(
+        BlocProvider(
             create: (context) => RelatedCubit(
                 RelatedRepoImplementation(apiService: ApiService()))
               ..getRelated(id))
       ],
       child: CustomAdaptiveLayout(
           mobileLayout: (context) => MobileLayoutVideoView(),
-          tabletLayout: (context) => SizedBox()),
+          tabletLayout: (context) => TabletLayoutVideoView()),
     );
   }
 }

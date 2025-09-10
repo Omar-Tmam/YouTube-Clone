@@ -8,11 +8,11 @@ import 'package:youtube_clone/Features/video_details/presentation/views/widgets/
 class ViewsAndDateSection extends StatelessWidget {
   const ViewsAndDateSection({
     super.key,
-    required this.widget,
+
     required this.videoDetailModel,
   });
 
-  final VideoPlayerWidget widget;
+
   final VideoDetailModel videoDetailModel;
 
   @override
@@ -29,11 +29,11 @@ class ViewsAndDateSection extends StatelessWidget {
       child: Row(
         children: [
           CustomText(
-            title: '${widget.videoDetailModel.viewCount} Views',
+            title: '${videoDetailModel.viewCount} Views',
             fontSize: AppStyles.styleRegular14(context).fontSize,
           ),
           CustomText(
-            title: ' • ${widget.videoDetailModel.publishedTimeText} ',
+            title: ' • ${videoDetailModel.publishedTimeText} ',
             fontSize: AppStyles.styleRegular14(context).fontSize,
           ),
           CustomText(

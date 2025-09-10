@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 
 class ChannelSubsAndSub extends StatelessWidget {
   const ChannelSubsAndSub({
-    super.key,
-    required this.widget,
+    super.key, required this.videoDetailModel,
   });
 
-  final VideoPlayerWidget widget;
+  final VideoDetailModel videoDetailModel;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ChannelSubsAndSub extends StatelessWidget {
             child: CustomText(
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleRegular14(context).fontWeight,
-              title: '${widget.videoDetailModel.channel?.subscriberCountText}',
+              title: '${videoDetailModel.channel?.subscriberCountText}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 
 class ChannelNameAndPhoto extends StatelessWidget {
   const ChannelNameAndPhoto({
-    super.key,
-    required this.widget,
+    super.key, required this.videoDetailModel,
   });
 
-  final VideoPlayerWidget widget;
+  final VideoDetailModel videoDetailModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ChannelNameAndPhoto extends StatelessWidget {
           CircleAvatar(
             radius: 16,
             backgroundImage: NetworkImage(
-              widget.videoDetailModel.channel?.avatar?[0].url ?? '',
+              videoDetailModel.channel?.avatar?[0].url ?? '',
             ),
           ),
           const SizedBox(width: 10),
@@ -30,7 +30,7 @@ class ChannelNameAndPhoto extends StatelessWidget {
             child: CustomText(
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
-              title: widget.videoDetailModel.channel?.name ?? '',
+              title: videoDetailModel.channel?.name ?? '',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

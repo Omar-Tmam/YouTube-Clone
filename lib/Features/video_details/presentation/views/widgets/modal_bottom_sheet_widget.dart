@@ -24,46 +24,49 @@ class ModalBottomSheetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Description", style: AppStyles.styleSemiBold18(context)),
-          Divider(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16,
-                children: [
-                  Text(videoModel.title ?? "",
-                      style: AppStyles.styleSemiBold18(context)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      VideoDetailsInfoLikesViews(
-                        count: videoModel.likeCount.toString(),
-                        title: 'Likes',
-                      ),
-                      VideoDetailsInfoLikesViews(
-                        count: videoModel.viewCount.toString(),
-                        title: 'Views',
-                      ),
-                      VideoDetailsInfoLikesViews(
-                          count: videoModel.publishedTimeText ?? "0"),
-                    ],
-                  ),
-                  Linkify(
-                    onOpen: _onOpen,
-                    text: videoModel.description ?? "",
-                    style: AppStyles.styleRegular14(context),
-                    linkStyle: AppStyles.styleRegular14(context)
-                        .copyWith(color: Colors.blue),
-                  ),
-                ],
+      child: SizedBox(
+        width: MediaQuery.sizeOf(context).width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Description", style: AppStyles.styleSemiBold18(context)),
+            Divider(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  children: [
+                    Text(videoModel.title ?? "",
+                        style: AppStyles.styleSemiBold18(context)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        VideoDetailsInfoLikesViews(
+                          count: videoModel.likeCount.toString(),
+                          title: 'Likes',
+                        ),
+                        VideoDetailsInfoLikesViews(
+                          count: videoModel.viewCount.toString(),
+                          title: 'Views',
+                        ),
+                        VideoDetailsInfoLikesViews(
+                            count: videoModel.publishedTimeText ?? "0"),
+                      ],
+                    ),
+                    Linkify(
+                      onOpen: _onOpen,
+                      text: videoModel.description ?? "",
+                      style: AppStyles.styleRegular14(context),
+                      linkStyle: AppStyles.styleRegular14(context)
+                          .copyWith(color: Colors.blue),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

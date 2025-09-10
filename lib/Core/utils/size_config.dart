@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class SizeConfig {
-  static const double tabletBreakPoint = 730;
+  static const double tabletBreakPoint = 700;
 
   static late double width, height;
 

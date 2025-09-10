@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_name_photo.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_sub_subs.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 
 class ChannelAndSubscribeSection extends StatelessWidget {
   const ChannelAndSubscribeSection({
-    super.key,
-    required this.widget,
+    super.key, required this.videoDetailModel,
   });
 
-  final VideoPlayerWidget widget;
-
+  final VideoDetailModel videoDetailModel;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ChannelNameAndPhoto(widget: widget),
+        ChannelNameAndPhoto(videoDetailModel: videoDetailModel,),
         const SizedBox(width: 10),
-        ChannelSubsAndSub(widget: widget),
+        ChannelSubsAndSub(videoDetailModel: videoDetailModel,),
       ],
     );
   }
