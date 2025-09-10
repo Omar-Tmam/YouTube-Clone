@@ -9,6 +9,7 @@ import 'package:youtube_clone/Features/video_details/data/models/video_detail_mo
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/comment_cubit/comment_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/action_button_row.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/comments_section.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/related_video_item.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_info_section.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
@@ -58,37 +59,59 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       ActionButtonModel(icon: Icons.flag_outlined, label: "Report"),
     ];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AspectRatio(
-          aspectRatio: 16 / 9,
-          child: Video(controller: controller),
-        ),
-        VideoInfoSection(
-          widget: widget,
-          videoDetailModel: widget.videoDetailModel,
-        ),
-        ActionButtonsRow(buttons: buttons),
-        SizedBox(
-          height: 10,
-        ),
-        BlocBuilder<CommentCubit, CommentState>(
-          builder: (context, state) {
-            if (state is CommentSucess) {
-              return CommentsSection(
-                commentModel: state.commentModel,
-              );
-            } else if (state is CommentLoading) {
-              return Center(
-                child: CupertinoActivityIndicator(),
-              );
-            } else {
-              return Text('failure');
-            }
-          },
-        )
-      ],
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: Video(controller: controller),
+          ),
+          Expanded(
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: VideoInfoSection(
+                    widget: widget,
+                    videoDetailModel: widget.videoDetailModel,
+                  ),
+                ),
+                SliverToBoxAdapter(child: ActionButtonsRow(buttons: buttons)),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 10,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: BlocBuilder<CommentCubit, CommentState>(
+                    builder: (context, state) {
+                      if (state is CommentSucess) {
+                        return CommentsSection(
+                          commentModel: state.commentModel,
+                        );
+                      } else if (state is CommentLoading) {
+                        return Center(
+                          child: CupertinoActivityIndicator(),
+                        );
+                      } else {
+                        return Text('failure');
+                      }
+                    },
+                  ),
+                ),
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  childCount: 5,
+                  (context, index) {
+                    return RelatedVideoItem();
+                  },
+                ))
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

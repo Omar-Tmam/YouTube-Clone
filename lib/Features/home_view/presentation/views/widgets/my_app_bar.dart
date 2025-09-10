@@ -6,17 +6,17 @@ import 'package:youtube_clone/Core/widgets/custom_text.dart';
 class MyAppBar extends StatelessWidget {
   const MyAppBar(
       {super.key,
-      required this.focusNode,
-      required this.controller,
-      required this.onTap,
-      required this.onSubmitted,
-      required this.suffix});
+      this.focusNode,
+      this.controller,
+      this.onTap,
+      this.onSubmitted,
+      this.suffix});
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Function()? onTap;
   final Function(dynamic)? onSubmitted;
   final FocusNode? focusNode;
-  final Widget suffix;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,8 @@ class MyAppBar extends StatelessWidget {
       children: [
         Image.network(
           'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png',
-          width: 60,
+          width: MediaQuery.of(context).size.width * 0.10, // 8% من عرض الشاشة
+          height: 40,
         ),
         SizedBox(
           width: 10,
