@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/data/models/related_model/related_model.dart';
 
 class RelatedVideoItem extends StatelessWidget {
   const RelatedVideoItem({
     super.key,
+    required this.index,
+    required this.relatedModel,
   });
-
+  final int index;
+  final RelatedModel relatedModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +24,7 @@ class RelatedVideoItem extends StatelessWidget {
               GestureDetector(
                   onTap: () {},
                   child: Image.network(
-                      'https://yt3.ggpht.com/Bg5wS82KGryRmcsn1YbPThtbXoTmj2XJ9_7LmuE2RF6wbKJBkovfRypbSz6UD3gEu_nHiwGZtQ=s88-c-k-c0x00ffffff-no-rj')),
+                      relatedModel.items?[index].thumbnails?[1].url ?? '')),
               Positioned(
                 bottom: 5,
                 right: 10,
