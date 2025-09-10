@@ -40,8 +40,7 @@ class CommentsSection extends StatelessWidget {
                   color: Colors.white,
                 ),
                 style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all(Colors.grey[900]),
+                  backgroundColor: WidgetStateProperty.all(Colors.grey[900]),
                   shadowColor: WidgetStateProperty.all(Colors.white),
                 ),
               )

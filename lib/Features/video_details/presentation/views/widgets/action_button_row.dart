@@ -16,7 +16,7 @@ class ActionButtonsRow extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: ElevatedButton.icon(
-              onPressed: () {}, 
+              onPressed: () {},
               icon: Icon(btn.icon, color: Colors.white, size: 20),
               label: Text(btn.label, style: AppStyles.styleRegular14(context)),
               style: ElevatedButton.styleFrom(

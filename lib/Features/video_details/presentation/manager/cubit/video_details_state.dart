@@ -14,7 +14,7 @@ final class VideoDetailsLoading extends VideoDetailsState {}
 final class VideoDetailsSuccess extends VideoDetailsState {
   final VideoDetailModel videoDetailModel;
 
-const VideoDetailsSuccess({required this.videoDetailModel});
+  const VideoDetailsSuccess({required this.videoDetailModel});
 }
 
 final class VideoDetailsFailure extends VideoDetailsState {

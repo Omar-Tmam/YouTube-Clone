@@ -16,7 +16,7 @@ class MobileVideoViewBody extends StatelessWidget {
           return Column(
             children: [
               VideoPlayerWidget(
-                videoDetailModel: state.videoDetailModel,
+                  videoDetailModel: state.videoDetailModel,
                   url: state.videoDetailModel.videos?.items?[0].url ?? '')
             ],
           );
@@ -27,6 +27,3 @@ class MobileVideoViewBody extends StatelessWidget {
     );
   }
 }
-
-
-

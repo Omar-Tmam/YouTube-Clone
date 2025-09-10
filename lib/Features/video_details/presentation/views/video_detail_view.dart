@@ -13,11 +13,11 @@ class VideoDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => VideoDetailsCubit(VideoDetailRepoImplementation(apiService: ApiService()))..getVideoDetail(id),
+      create: (context) => VideoDetailsCubit(
+          VideoDetailRepoImplementation(apiService: ApiService()))
+        ..getVideoDetail(id),
       child: CustomAdaptiveLayout(
-          mobileLayout: (context) => MobileLayoutVideoView(
-
-              ),
+          mobileLayout: (context) => MobileLayoutVideoView(),
           tabletLayout: (context) => SizedBox()),
     );
   }

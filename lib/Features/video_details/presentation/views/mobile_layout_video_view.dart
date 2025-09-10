@@ -3,7 +3,6 @@ import 'package:youtube_clone/Features/video_details/presentation/views/widgets/
 
 class MobileLayoutVideoView extends StatelessWidget {
   const MobileLayoutVideoView({super.key});
- 
 
   @override
   Widget build(BuildContext context) {
