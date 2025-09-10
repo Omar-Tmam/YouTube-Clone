@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/Core/utils/app_styles.dart';
-import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_name_photo.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_sub_subs.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 
 class ChannelAndSubscribeSection extends StatelessWidget {
@@ -16,70 +16,13 @@ class ChannelAndSubscribeSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          fit: FlexFit.loose,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                radius: 16,
-                backgroundImage: NetworkImage(
-                  widget.videoDetailModel.channel?.avatar?[0].url ?? '',
-                ),
-              ),
-              const SizedBox(width: 10),
-              Flexible(
-                fit: FlexFit.loose,
-                child: CustomText(
-                  fontSize: AppStyles.styleRegular14(context).fontSize,
-                  fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
-                  title: widget.videoDetailModel.channel?.name ?? '',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-        ),
+        ChannelNameAndPhoto(widget: widget),
         const SizedBox(width: 10),
-        Flexible(
-          fit: FlexFit.loose,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Flexible(
-                child: CustomText(
-                  fontSize: AppStyles.styleRegular14(context).fontSize,
-                  fontWeight: AppStyles.styleRegular14(context).fontWeight,
-                  title:
-                      '${widget.videoDetailModel.channel?.subscriberCountText}',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  elevation: 0,
-                ),
-                child: CustomText(
-                  fontSize: AppStyles.styleRegular14(context).fontSize,
-                  fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
-                  title: 'Subscribe',
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-        ),
+        ChannelSubsAndSub(widget: widget),
       ],
     );
   }
 }
+
+
+

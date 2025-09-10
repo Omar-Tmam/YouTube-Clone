@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:youtube_clone/Core/functions/format_number.dart';
-import 'package:youtube_clone/Core/utils/app_styles.dart';
-import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/comment_cubit/comment_cubit.dart';
