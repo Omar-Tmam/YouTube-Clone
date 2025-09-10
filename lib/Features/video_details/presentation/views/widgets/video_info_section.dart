@@ -23,6 +23,7 @@ class VideoInfoSection extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CustomText(
+          maxLines: 3,
           title: widget.videoDetailModel.title ?? '',
           fontSize: AppStyles.styleRegular14(context).fontSize,
           fontWeight: AppStyles.styleSemiBold18(context).fontWeight,

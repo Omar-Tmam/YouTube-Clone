@@ -1,16 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:youtube_clone/Core/functions/format_number.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
-import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/comment_cubit/comment_cubit.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/action_button_row.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/comments_section.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/related_video_item.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_info_section.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/scrollable_section.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   /// The network URL of the video to play.
@@ -69,46 +63,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             child: Video(controller: controller),
           ),
           Expanded(
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: VideoInfoSection(
-                    widget: widget,
-                    videoDetailModel: widget.videoDetailModel,
-                  ),
-                ),
-                SliverToBoxAdapter(child: ActionButtonsRow(buttons: buttons)),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 10,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: BlocBuilder<CommentCubit, CommentState>(
-                    builder: (context, state) {
-                      if (state is CommentSucess) {
-                        return CommentsSection(
-                          commentModel: state.commentModel,
-                        );
-                      } else if (state is CommentLoading) {
-                        return Center(
-                          child: CupertinoActivityIndicator(),
-                        );
-                      } else {
-                        return Text('failure');
-                      }
-                    },
-                  ),
-                ),
-                SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                  childCount: 5,
-                  (context, index) {
-                    return RelatedVideoItem();
-                  },
-                ))
-              ],
-            ),
+            child: ScrollableSection(widget: widget, buttons: buttons),
           )
         ],
       ),
