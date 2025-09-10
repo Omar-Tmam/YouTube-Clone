@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/Core/utils/size_config.dart';
 
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
   final String title;
@@ -13,14 +11,14 @@ class CustomText extends StatelessWidget {
   final TextOverflow? overflow;
 
   const CustomText({
-    Key? key,
+    super.key,
     required this.title,
     this.fontSize,
     this.fontWeight,
     this.maxLines,
     this.color,
     this.overflow,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

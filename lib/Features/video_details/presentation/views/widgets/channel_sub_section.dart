@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
