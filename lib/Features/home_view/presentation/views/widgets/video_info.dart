@@ -29,7 +29,7 @@ class VideoInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                maxLines: 3,
+                // maxLines: 3,
                 title: searchModel.items?[index].title ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
@@ -42,14 +42,21 @@ class VideoInfo extends StatelessWidget {
               ),
               Row(
                 children: [
-                  CustomText(
-                      maxLines: 3,
-                      title: searchModel.items?[index].viewCountText ?? '',
-                      fontSize: AppStyles.styleRegular14(context).fontSize),
-                  CustomText(
-                      title:
-                          ' •  ${searchModel.items?[index].publishedTimeText ?? ''}',
-                      fontSize: AppStyles.styleRegular14(context).fontSize),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: CustomText(
+                        maxLines: 3,
+                        title: searchModel.items?[index].viewCountText ?? '',
+                        fontSize: AppStyles.styleRegular14(context).fontSize),
+                  ),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: CustomText(
+                        maxLines: 2,
+                        title:
+                            ' •  ${searchModel.items?[index].publishedTimeText ?? ''}',
+                        fontSize: AppStyles.styleRegular14(context).fontSize),
+                  ),
                 ],
               )
             ],
