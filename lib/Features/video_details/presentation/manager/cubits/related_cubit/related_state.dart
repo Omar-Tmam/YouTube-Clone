@@ -8,3 +8,17 @@ sealed class RelatedState extends Equatable {
 }
 
 final class RelatedInitial extends RelatedState {}
+
+final class RelatedLoading extends RelatedState {}
+
+final class RelatedSuccess extends RelatedState {
+  final RelatedModel relatedModel;
+
+  const RelatedSuccess({required this.relatedModel});
+}
+
+final class RelatedFailure extends RelatedState {
+  final String errMessage;
+
+ const RelatedFailure({required this.errMessage});
+}
