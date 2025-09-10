@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/related_model/related_model.dart';
+import 'package:youtube_clone/Features/video_details/presentation/views/widgets/related_video_info.dart';
 
 class RelatedVideoItem extends StatelessWidget {
   const RelatedVideoItem({
@@ -17,14 +18,18 @@ class RelatedVideoItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
-              GestureDetector(
-                  onTap: () {},
-                  child: Image.network(
-                      relatedModel.items?[index].thumbnails?[1].url ?? '')),
+              ClipRRect(
+                borderRadius:
+                    BorderRadius.circular(12), // هنا تحدد قيمة الـ radius
+                child: Image.network(
+                  relatedModel.items?[index].thumbnails?[1].url ?? '',
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+              ),
               Positioned(
                 bottom: 5,
                 right: 10,
@@ -34,7 +39,7 @@ class RelatedVideoItem extends StatelessWidget {
                     fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
                     color: Colors.black,
                     fontSize: AppStyles.styleSemiBold18(context).fontSize,
-                    title: '',
+                    title: relatedModel.items?[index].lengthText ?? '',
                   ),
                 ),
               ),
@@ -43,9 +48,10 @@ class RelatedVideoItem extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Divider(
-            color: Colors.white,
-          )
+          RelatedVideoInfo(index: index, relatedModel: relatedModel),
+          SizedBox(
+            height: 8,
+          ),
         ],
       ),
     );

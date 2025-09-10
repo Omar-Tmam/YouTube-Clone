@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
+import 'package:youtube_clone/Features/video_details/data/models/related_model/related_model.dart';
 
-class VideoInfo extends StatelessWidget {
-  const VideoInfo({
+class RelatedVideoInfo extends StatelessWidget {
+  const RelatedVideoInfo({
     super.key,
-    required this.searchModel,
+    required this.relatedModel,
     required this.index,
   });
-  final SearchModel searchModel;
+  final RelatedModel relatedModel;
   final int index;
 
   @override
@@ -18,7 +19,7 @@ class VideoInfo extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: NetworkImage(
-              searchModel.items?[index].channel?.avatar?[0].url ?? ''),
+              relatedModel.items?[index].channel?.avatar?[0].url ?? ''),
           radius: 20,
         ),
         SizedBox(
@@ -29,26 +30,24 @@ class VideoInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                maxLines: 3,
-                title: searchModel.items?[index].title ?? '',
+                title: relatedModel.items?[index].title ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
               SizedBox(
                 height: 6,
               ),
-              CustomText(title: searchModel.items?[index].channel?.name ?? ''),
+              CustomText(title: relatedModel.items?[index].channel?.name ?? ''),
               SizedBox(
                 height: 6,
               ),
               Row(
                 children: [
                   CustomText(
-                      maxLines: 3,
-                      title: searchModel.items?[index].viewCountText ?? '',
+                      title: relatedModel.items?[index].viewCountText ?? '',
                       fontSize: AppStyles.styleRegular14(context).fontSize),
                   CustomText(
                       title:
-                          ' •  ${searchModel.items?[index].publishedTimeText ?? ''}',
+                          ' •  ${relatedModel.items?[index].publishedTimeText ?? ''}',
                       fontSize: AppStyles.styleRegular14(context).fontSize),
                 ],
               )

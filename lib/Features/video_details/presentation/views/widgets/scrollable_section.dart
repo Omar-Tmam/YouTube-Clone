@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:youtube_clone/Core/utils/app_router.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/comment_cubit/comment_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/related_cubit/related_cubit.dart';
@@ -60,9 +62,15 @@ class ScrollableSection extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate(
                 childCount: state.relatedModel.items?.length,
                 (context, index) {
-                  return RelatedVideoItem(
-                    relatedModel: state.relatedModel,
-                    index: index,
+                  return GestureDetector(
+                    onTap: () {
+                      context.pushReplacement(AppRouter.kVideoDetailView,
+                          extra: state.relatedModel.items?[index].id);
+                    },
+                    child: RelatedVideoItem(
+                      relatedModel: state.relatedModel,
+                      index: index,
+                    ),
                   );
                 },
               ));

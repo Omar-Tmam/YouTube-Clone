@@ -25,8 +25,11 @@ class VideoItem extends StatelessWidget {
                     GoRouter.of(context).push(AppRouter.kVideoDetailView,
                         extra: searchModel.items?[index].id);
                   },
-                  child: Image.network(
-                      searchModel.items?[index].thumbnails?[1].url ?? '')),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                        searchModel.items?[index].thumbnails?[1].url ?? ''),
+                  )),
               Positioned(
                 bottom: 5,
                 right: 10,
@@ -49,9 +52,9 @@ class VideoItem extends StatelessWidget {
             index: index,
             searchModel: searchModel,
           ),
-          Divider(
-            color: Colors.white,
-          )
+          SizedBox(
+            height: 8,
+          ),
         ],
       ),
     );
