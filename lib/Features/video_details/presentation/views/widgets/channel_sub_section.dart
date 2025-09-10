@@ -14,48 +14,71 @@ class ChannelAndSubscribeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CircleAvatar(
-          radius: 16,
-          backgroundImage: NetworkImage(
-              widget.videoDetailModel.channel?.avatar?[0].url ?? ''),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        CustomText(
-          fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
-          title: widget.videoDetailModel.channel?.name ?? '',
-          fontSize: AppStyles.styleRegular14(context).fontSize,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        CustomText(
-          title: '${widget.videoDetailModel.channel?.subscriberCountText}',
-          fontSize: AppStyles.styleRegular14(context).fontSize,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Expanded(child: SizedBox()),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            elevation: 0,
+        Flexible(
+          fit: FlexFit.loose,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                radius: 16,
+                backgroundImage: NetworkImage(
+                  widget.videoDetailModel.channel?.avatar?[0].url ?? '',
+                ),
+              ),
+              const SizedBox(width: 10),
+              Flexible(
+                fit: FlexFit.loose,
+                child: CustomText(
+                  fontSize: AppStyles.styleRegular14(context).fontSize,
+                  fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
+                  title: widget.videoDetailModel.channel?.name ?? '',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
           ),
-          child: CustomText(
-            fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
-            fontSize: AppStyles.styleRegular14(context).fontSize,
-            title: 'Subscribe',
-            color: Colors.black,
+        ),
+        const SizedBox(width: 10),
+        Flexible(
+          fit: FlexFit.loose,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: CustomText(
+                  fontSize: AppStyles.styleRegular14(context).fontSize,
+                  fontWeight: AppStyles.styleRegular14(context).fontWeight,
+                  title:
+                      '${widget.videoDetailModel.channel?.subscriberCountText}',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  elevation: 0,
+                ),
+                child: CustomText(
+                  fontSize: AppStyles.styleRegular14(context).fontSize,
+                  fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
+                  title: 'Subscribe',
+                  color: Colors.black,
+                ),
+              ),
+            ],
           ),
-        )
+        ),
       ],
     );
   }

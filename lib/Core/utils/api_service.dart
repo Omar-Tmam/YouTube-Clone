@@ -8,7 +8,7 @@ class ApiService {
     var response = await _dio.get('$_baseUrl$endPoint',
         options: Options(headers: {
           'x-rapidapi-key':
-              'd9e2dd6ad8mshef8427364eaa095p145bf8jsn399c2fbc6f00',
+              '4a605f3be5mshb86dc34b8aa14ecp12474cjsn9122fb4804ca',
           'x-rapidapi-host': 'youtube-media-downloader.p.rapidapi.com'
         }));
     return response.data;

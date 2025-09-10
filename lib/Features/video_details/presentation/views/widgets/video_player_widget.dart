@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:youtube_clone/Core/functions/format_number.dart';
@@ -6,6 +8,7 @@ import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/action_button_model.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
+import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/comment_cubit/comment_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/action_button_row.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/comments_section.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_info_section.dart';
@@ -72,7 +75,21 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         SizedBox(
           height: 10,
         ),
-        CommentsSection()
+        BlocBuilder<CommentCubit, CommentState>(
+          builder: (context, state) {
+            if (state is CommentSucess) {
+              return CommentsSection(
+                commentModel: state.commentModel,
+              );
+            } else if (state is CommentLoading) {
+              return Center(
+                child: CupertinoActivityIndicator(),
+              );
+            } else {
+              return Text('failure');
+            }
+          },
+        )
       ],
     );
   }

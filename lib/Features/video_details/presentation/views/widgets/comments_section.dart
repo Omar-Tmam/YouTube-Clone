@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
+import 'package:youtube_clone/Features/video_details/data/models/comment_model/comment_model.dart';
 
 class CommentsSection extends StatelessWidget {
   const CommentsSection({
     super.key,
+    required this.commentModel,
   });
+  final CommentModel commentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class CommentsSection extends StatelessWidget {
               ),
               CustomText(
                 color: Colors.grey,
-                title: '100',
+                title: commentModel.countText ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
               Expanded(child: SizedBox()),
@@ -51,15 +54,18 @@ class CommentsSection extends StatelessWidget {
               CircleAvatar(
                 radius: 16,
                 backgroundImage: NetworkImage(
-                    'https://yt3.ggpht.com/Bg5wS82KGryRmcsn1YbPThtbXoTmj2XJ9_7LmuE2RF6wbKJBkovfRypbSz6UD3gEu_nHiwGZtQ=s88-c-k-c0x00ffffff-no-rj'),
+                    commentModel.items?[1].channel?.avatar?[0].url ?? ''),
               ),
               SizedBox(
                 width: 8,
               ),
-              CustomText(
-                title: 'can confirm: he never gave us up',
-                fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
-                fontSize: AppStyles.styleRegular14(context).fontSize,
+              Expanded(
+                child: CustomText(
+                  maxLines: 3,
+                  title: commentModel.items?[1].contentText ?? '',
+                  fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
+                  fontSize: AppStyles.styleRegular14(context).fontSize,
+                ),
               )
             ],
           )
