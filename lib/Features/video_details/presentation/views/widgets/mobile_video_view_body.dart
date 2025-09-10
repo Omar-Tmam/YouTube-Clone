@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:youtube_clone/Features/video_details/presentation/manager/cubit/video_details_cubit.dart';
+import 'package:youtube_clone/Features/video_details/presentation/manager/cubits/video_detail_cubit/video_details_cubit.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 
 class MobileVideoViewBody extends StatelessWidget {
