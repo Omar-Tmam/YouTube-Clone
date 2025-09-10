@@ -26,7 +26,7 @@ class TabletVideoViewBody extends StatelessWidget {
             children: [
               /// الجزء الشمال (الفيديو + info + كومنتات)
               Expanded(
-                flex: 3,
+                flex: 5,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -65,7 +65,7 @@ class TabletVideoViewBody extends StatelessWidget {
 
               /// الجزء اليمين (الفيديوهات الـ related)
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: BlocBuilder<RelatedCubit, RelatedState>(
                   builder: (context, relatedState) {
                     if (relatedState is RelatedSuccess) {

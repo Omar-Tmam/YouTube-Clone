@@ -36,7 +36,10 @@ class RelatedVideoInfo extends StatelessWidget {
               SizedBox(
                 height: 6,
               ),
-              CustomText(title: relatedModel.items?[index].channel?.name ?? ''),
+              CustomText(
+                title: relatedModel.items?[index].channel?.name ?? '',
+                fontSize: AppStyles.styleRegular14(context).fontSize,
+              ),
               SizedBox(
                 height: 6,
               ),
