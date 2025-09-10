@@ -23,6 +23,3 @@ class ChannelAndSubscribeSection extends StatelessWidget {
     );
   }
 }
-
-
-

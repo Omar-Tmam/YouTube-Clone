@@ -22,8 +22,7 @@ class ChannelSubsAndSub extends StatelessWidget {
             child: CustomText(
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleRegular14(context).fontWeight,
-              title:
-                  '${widget.videoDetailModel.channel?.subscriberCountText}',
+              title: '${widget.videoDetailModel.channel?.subscriberCountText}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -36,8 +35,7 @@ class ChannelSubsAndSub extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               elevation: 0,
             ),
             child: CustomText(

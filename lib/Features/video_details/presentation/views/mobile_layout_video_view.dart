@@ -13,5 +13,3 @@ class MobileLayoutVideoView extends StatelessWidget {
     );
   }
 }
-
-
