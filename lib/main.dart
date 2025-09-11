@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
@@ -8,7 +9,12 @@ import 'package:youtube_clone/Core/utils/app_theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
-  runApp(const YouTubeClone());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const YouTubeClone(),
+    ),
+  );
 }
 
 class YouTubeClone extends StatelessWidget {
@@ -22,6 +28,8 @@ class YouTubeClone extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, state) {
           return MaterialApp.router(
+              locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
               routerConfig: AppRouter.router,
               darkTheme: AppTheme.darkMode,
