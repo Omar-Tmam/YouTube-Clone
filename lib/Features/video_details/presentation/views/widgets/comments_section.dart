@@ -16,13 +16,17 @@ class CommentsSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.grey[900], borderRadius: BorderRadius.circular(8)),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.grey[900]
+              : Colors.grey[200],
+          borderRadius: BorderRadius.circular(8)),
       child: Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomText(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
                 fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
                 fontSize: AppStyles.styleSemiBold18(context).fontSize,
                 title: 'Comments',
@@ -31,7 +35,7 @@ class CommentsSection extends StatelessWidget {
                 width: 6,
               ),
               CustomText(
-                color: Colors.grey,
+                color: Theme.of(context).textTheme.bodySmall?.color,
                 title: commentModel.countText ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
@@ -40,12 +44,11 @@ class CommentsSection extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.keyboard_arrow_down,
-                  color: Colors.white,
                 ),
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Colors.grey[900]),
-                  shadowColor: WidgetStateProperty.all(Colors.white),
-                ),
+                    // backgroundColor: WidgetStateProperty.all(Colors.grey[900]),
+                    // shadowColor: WidgetStateProperty.all(Colors.white),
+                    ),
               )
             ],
           ),
@@ -61,6 +64,7 @@ class CommentsSection extends StatelessWidget {
               ),
               Expanded(
                 child: CustomText(
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                   maxLines: 3,
                   title: commentModel.items?[1].contentText ?? '',
                   fontWeight: AppStyles.styleSemiBold18(context).fontWeight,

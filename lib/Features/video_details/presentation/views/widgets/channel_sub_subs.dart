@@ -6,7 +6,8 @@ import 'package:youtube_clone/Features/video_details/presentation/views/widgets/
 
 class ChannelSubsAndSub extends StatelessWidget {
   const ChannelSubsAndSub({
-    super.key, required this.videoDetailModel,
+    super.key,
+    required this.videoDetailModel,
   });
 
   final VideoDetailModel videoDetailModel;
@@ -20,6 +21,7 @@ class ChannelSubsAndSub extends StatelessWidget {
         children: [
           Flexible(
             child: CustomText(
+              color: Theme.of(context).textTheme.bodyLarge?.color,
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleRegular14(context).fontWeight,
               title: '${videoDetailModel.channel?.subscriberCountText}',
@@ -31,7 +33,6 @@ class ChannelSubsAndSub extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -42,7 +43,7 @@ class ChannelSubsAndSub extends StatelessWidget {
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
               title: 'Subscribe',
-              color: Colors.black,
+              color: Theme.of(context).textTheme.bodyLarge?.color,
             ),
           ),
         ],

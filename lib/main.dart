@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:youtube_clone/Core/utils/app_router.dart';
+import 'package:youtube_clone/Core/utils/app_theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +16,10 @@ class YouTubeClone extends StatelessWidget {
   Widget build(BuildContext context) {
     print(MediaQuery.sizeOf(context).width);
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
-      darkTheme: ThemeData.dark(),
-      themeMode: ThemeMode.system,
-    );
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
+        darkTheme: AppTheme.darkMode,
+        themeMode: ThemeMode.dark,
+        theme: AppTheme.lightMode);
   }
 }

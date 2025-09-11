@@ -6,7 +6,8 @@ import 'package:youtube_clone/Features/video_details/presentation/views/widgets/
 
 class ChannelNameAndPhoto extends StatelessWidget {
   const ChannelNameAndPhoto({
-    super.key, required this.videoDetailModel,
+    super.key,
+    required this.videoDetailModel,
   });
 
   final VideoDetailModel videoDetailModel;
@@ -28,6 +29,7 @@ class ChannelNameAndPhoto extends StatelessWidget {
           Flexible(
             fit: FlexFit.loose,
             child: CustomText(
+              color: Theme.of(context).textTheme.bodyLarge?.color,
               fontSize: AppStyles.styleRegular14(context).fontSize,
               fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
               title: videoDetailModel.channel?.name ?? '',

@@ -29,6 +29,7 @@ class VideoInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
                 // maxLines: 3,
                 title: searchModel.items?[index].title ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
@@ -36,7 +37,9 @@ class VideoInfo extends StatelessWidget {
               SizedBox(
                 height: 6,
               ),
-              CustomText(title: searchModel.items?[index].channel?.name ?? ''),
+              CustomText(
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
+                  title: searchModel.items?[index].channel?.name ?? ''),
               SizedBox(
                 height: 6,
               ),
@@ -45,6 +48,7 @@ class VideoInfo extends StatelessWidget {
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: CustomText(
+                        color: Theme.of(context).textTheme.bodyLarge?.color,
                         maxLines: 3,
                         title: searchModel.items?[index].viewCountText ?? '',
                         fontSize: AppStyles.styleRegular14(context).fontSize),
@@ -52,6 +56,7 @@ class VideoInfo extends StatelessWidget {
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: CustomText(
+                        color: Theme.of(context).textTheme.bodyLarge?.color,
                         maxLines: 2,
                         title:
                             ' •  ${searchModel.items?[index].publishedTimeText ?? ''}',

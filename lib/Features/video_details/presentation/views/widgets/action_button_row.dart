@@ -6,7 +6,8 @@ import 'package:youtube_clone/Features/video_details/data/models/video_detail_mo
 
 class ActionButtonsRow extends StatelessWidget {
   const ActionButtonsRow({
-    super.key, required this.videoDetailModel,
+    super.key,
+    required this.videoDetailModel,
   });
   final VideoDetailModel videoDetailModel;
 
@@ -32,10 +33,11 @@ class ActionButtonsRow extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: ElevatedButton.icon(
               onPressed: () {},
-              icon: Icon(btn.icon, color: Colors.white, size: 20),
-              label: Text(btn.label, style: AppStyles.styleRegular14(context)),
+              icon: Icon(btn.icon, size: 20),
+              label: Text(btn.label,
+                  style: AppStyles.styleRegular14(context).copyWith(
+                      color: Theme.of(context).textTheme.bodyLarge?.color)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey[900],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),

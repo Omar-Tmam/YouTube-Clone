@@ -30,6 +30,7 @@ class RelatedVideoInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
                 title: relatedModel.items?[index].title ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
@@ -37,6 +38,7 @@ class RelatedVideoInfo extends StatelessWidget {
                 height: 6,
               ),
               CustomText(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
                 title: relatedModel.items?[index].channel?.name ?? '',
                 fontSize: AppStyles.styleRegular14(context).fontSize,
               ),
@@ -46,9 +48,11 @@ class RelatedVideoInfo extends StatelessWidget {
               Row(
                 children: [
                   CustomText(
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
                       title: relatedModel.items?[index].viewCountText ?? '',
                       fontSize: AppStyles.styleRegular14(context).fontSize),
                   CustomText(
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
                       title:
                           ' •  ${relatedModel.items?[index].publishedTimeText ?? ''}',
                       fontSize: AppStyles.styleRegular14(context).fontSize),
