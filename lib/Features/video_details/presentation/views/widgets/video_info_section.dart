@@ -3,9 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 import 'package:youtube_clone/Features/video_details/data/models/video_detail_model/video_detail_model.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/action_button_row.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/channel_sub_section.dart';
-import 'package:youtube_clone/Features/video_details/presentation/views/widgets/video_player_widget.dart';
 import 'package:youtube_clone/Features/video_details/presentation/views/widgets/views_date_sction.dart';
 
 class VideoInfoSection extends StatelessWidget {

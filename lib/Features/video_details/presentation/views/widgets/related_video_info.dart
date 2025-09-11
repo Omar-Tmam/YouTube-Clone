@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
-import 'package:youtube_clone/Features/home_view/data/models/search_model/search_model.dart';
 import 'package:youtube_clone/Features/video_details/data/models/related_model/related_model.dart';
 
 class RelatedVideoInfo extends StatelessWidget {
