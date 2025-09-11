@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:youtube_clone/Core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 
@@ -34,6 +36,15 @@ class CustomVideoAppBar extends StatelessWidget implements PreferredSizeWidget {
             fontSize: AppStyles.styleSemiBold22(context).fontSize,
             fontWeight: AppStyles.styleSemiBold22(context).fontWeight,
           ),
+          Spacer(),
+          IconButton(
+              color: Colors.white,
+              onPressed: () {
+                context.read<ThemeCubit>().toggleTheme();
+              },
+              icon: Icon(Theme.of(context).brightness == Brightness.dark
+                  ? Icons.light_mode
+                  : Icons.dark_mode))
         ],
       ),
     );

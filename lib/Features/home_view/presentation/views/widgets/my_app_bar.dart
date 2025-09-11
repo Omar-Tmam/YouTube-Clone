@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:youtube_clone/Core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:youtube_clone/Core/utils/app_styles.dart';
 import 'package:youtube_clone/Core/widgets/custom_text.dart';
 
@@ -65,6 +67,14 @@ class MyAppBar extends StatelessWidget {
                 border: Border.all(color: Colors.white)),
           ),
         ),
+        IconButton(
+            color: Colors.white,
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme();
+            },
+            icon: Icon(Theme.of(context).brightness == Brightness.dark
+                ? Icons.light_mode
+                : Icons.dark_mode))
       ],
     );
   }

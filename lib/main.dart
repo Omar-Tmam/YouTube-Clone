@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
+import 'package:youtube_clone/Core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:youtube_clone/Core/utils/app_router.dart';
 import 'package:youtube_clone/Core/utils/app_theme.dart';
 
@@ -15,11 +17,18 @@ class YouTubeClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.sizeOf(context).width);
-    return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerConfig: AppRouter.router,
-        darkTheme: AppTheme.darkMode,
-        themeMode: ThemeMode.dark,
-        theme: AppTheme.lightMode);
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, state) {
+          return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              routerConfig: AppRouter.router,
+              darkTheme: AppTheme.darkMode,
+              themeMode: state,
+              theme: AppTheme.lightMode);
+        },
+      ),
+    );
   }
 }
